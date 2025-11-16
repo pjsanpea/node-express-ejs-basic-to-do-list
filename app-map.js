@@ -70,7 +70,7 @@ app.post("/", function (req, res) {
 
   // Check if the POST request came from the 'Work' list form.
   // Differentiating between work and main list based on the listName.
-  if (listName === "Work") {
+  if (listName === "Work List") {
     // If it is from 'Work', add the item to the workItems array.
     workItems.set(uid, itemText); // Work list item addition.
 
@@ -93,7 +93,7 @@ app.get("/work", function (req, res) {
   // Convert the Map to an Array of objects for EJS to iterate over
   const itemList = Array.from(workItems, ([uid, text]) => ({ uid, text }));
 
-  res.render("list-map", { listTitle: "Work", newListItems: itemList });
+  res.render("list-map", { listTitle: "Work List", newListItems: itemList });
 });
 
 // Item deletion handler manages the removal of items from the list.

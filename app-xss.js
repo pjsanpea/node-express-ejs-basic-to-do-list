@@ -47,7 +47,7 @@ app.post("/", function (req, res) {
   const item = req.body.newItem;
 
   // Check if the POST request came from the 'Work' list form.
-  if (req.body.list === "Work") {
+  if (req.body.list === "Work List") {
     // If it is from 'Work', add the item to the workItems array.
     workItems.push(item);
     // Redirect to the '/work' route which will trigger the GET handler for that route.
@@ -70,8 +70,13 @@ app.post("/submit-name", function (req, res) {
 );
 // Define a GET route handler for the '/work' route.
 app.get("/work", function (req, res) {
-  // Render the 'list' template with 'Work List' as the title and the workItems array for the list items.
-  res.render("list", { listTitle: "Work List", newListItems: workItems });
+  // 1. Renderiza "list-xss" (igual que la ruta /)
+  // 2. Pasa la variable "userName" (igual que la ruta /)
+  res.render("list-xss", {
+    listTitle: "Work List",
+    newListItems: workItems,
+    userName: userName // <-- Añade esto
+  });
 });
 
 // Define a GET route handler for the '/about' route.

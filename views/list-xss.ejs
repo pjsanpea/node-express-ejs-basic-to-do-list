@@ -49,7 +49,9 @@ The '-' in the tags (<%- -%>) trims the newline characters from the output, keep
       The submit button for the form. When clicked, it will submit the form data.
       The 'name' attribute for the button is set to 'list', but without a value; it serves no purpose in this code.
       -->
-          <button type="submit" name="list">+</button>
+          <input type="hidden" name="list" value="<%= listTitle %>">
+
+          <button type="submit">+</button>
         </form>
   </div>
 
@@ -63,7 +65,7 @@ The '-' in the tags (<%- -%>) trims the newline characters from the output, keep
   <!-- use Hello, <%= userName %>! to sanitize-->
 
   <div>
-    Hello, <%- userName %>!
+    Hello, <%= userName %>!
   </div>
 
   <%- include("footer") -%>
